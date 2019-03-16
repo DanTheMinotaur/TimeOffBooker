@@ -31,5 +31,8 @@
     "webpack": "^4.27.1",
     "webpack-cli": "^3.0.3",
     "webpack-dev-server": "^3.1.14"
+  },
+  "dependencies": {
+    "daterangepicker": "^3.0.3"
   }
 }

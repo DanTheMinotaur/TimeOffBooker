@@ -1,8 +1,10 @@
 import 'bulma'
 import './scss/style.scss'
+import 'daterangepicker'
 
-console.log("HELLO");
 
-let hello = "ineianedoa";
-
-console.log(hello);
+(function () {
+    let bookingButton = document.getElementById("book-time-off");
+    console.log(bookingButton);
+    bookingButton.daterangepicker();
+})();
