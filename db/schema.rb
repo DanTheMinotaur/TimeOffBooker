@@ -10,7 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_15_234835) do
+ActiveRecord::Schema.define(version: 2019_03_16_165850) do
+
+  create_table "approvals", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "time_offs", force: :cascade do |t|
     t.date "start_date", null: false
