@@ -68,7 +68,7 @@
                   <% @events.each do |event| %>
                     <tr>
                       <td width="5%"><i class="fa fa-bell-o"></i></td>
-                      <td><%= event.user.name %> is on <%= event.off_type %> from <%= event.start_date %> to <%= event.end_date %>  </td>
+                      <td><%= event.user.name %> (<%= event.user.job_title %>) is on <%= event.off_type %> from <%= event.start_date %> to <%= event.end_date %>  </td>
                     </tr>
                   <% end %>
                   </tbody>
