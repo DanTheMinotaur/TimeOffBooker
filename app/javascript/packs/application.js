@@ -14,5 +14,34 @@
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+import 'bulma'
+import bulmaCalendar from 'bulma-calendar';
+import "bulma-calendar/dist/css/bulma-calendar.min.css";
 
-console.log('Hello World from Webpacker')
+console.log('Hello World from Webpacker');
+
+function ready(fn) {
+    if (document.readyState != 'loading'){
+        fn();
+    } else {
+        document.addEventListener('DOMContentLoaded', fn);
+    }
+}
+
+ready(function() {
+    let bookingButton = document.getElementById("bookTimeOff");
+
+    const calendars = bulmaCalendar.attach(document.getElementById("bookingPicker"), {
+        isRange: true
+    });
+    let bookingPicker = calendars[0];
+
+    bookingPicker.on("select", function(datePicker) {
+        let dateSelected = datePicker.data.value(); // TODO Figure out how to get end and start date seperately.
+        console.log(dateSelected);
+    });
+
+    bookingButton.addEventListener("click", function () {
+        bookingPicker.hide();
+    });
+});
