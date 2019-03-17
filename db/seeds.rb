@@ -18,6 +18,14 @@ users = User.create(
 
 time_offs = TimeOff.create(
     [
-        {user_id: 2, start_date: Date.new(2019, 03, 17), end_date: Date.new(2019, 03, 20), note: "Hello I am a cheeseburger", approved: false}
+        {user_id: 2, start_date: Date.new(2019, 03, 17), end_date: Date.new(2019, 03, 20), note: "Hello I am a cheeseburger", approved: false},
+        {user_id: 3, start_date: Date.new(2019, 04, 17), end_date: Date.new(2019, 05, 01), note: "Holiday", approved: false},
+        {user_id: 4, start_date: Date.new(2019, 10, 1), end_date: Date.new(2019, 10, 5), note: "Hello ", approved: false},
+        {user_id: 5, start_date: Date.new(2019, 05, 17), end_date: Date.new(2019, 05, 30), note: "Cheeseburger", approved: true, approved_by: 1},
+        {user_id: 2, start_date: Date.new(2019, 05, 17), end_date: Date.new(2019, 05, 17), note: "Cheeseburger", approved: true, approved_by: 5},
+        {user_id: 3, start_date: Date.new(2019, 05, 20), end_date: Date.new(2019, 05, 22), note: "Cheeseburger", approved: true, approved_by: 5},
+        {user_id: 4, start_date: Date.new(2019, 06, 20), end_date: Date.new(2019, 06, 23), note: "Cheeseburger", approved: false},
+        {user_id: 4, start_date: Date.new(2019, 07, 30), end_date: Date.new(2019, 8, 02), note: "Cheeseburger", approved: false},
+        {user_id: 5, start_date: Date.new(2019, 9, 17), end_date: Date.new(2019, 9, 18), note: "Cheeseburger", approved: true, approved_by: 1},
     ]
 )
