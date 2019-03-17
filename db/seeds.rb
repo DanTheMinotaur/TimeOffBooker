@@ -29,3 +29,9 @@ time_offs = TimeOff.create(
         {user_id: 5, start_date: Date.new(2019, 9, 17), end_date: Date.new(2019, 9, 18), note: "Cheeseburger", approved: true, approved_by: 1},
     ]
 )
+
+approvals = Approval.create(
+    [
+        {}
+    ]
+)
