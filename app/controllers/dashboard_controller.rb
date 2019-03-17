@@ -4,7 +4,7 @@ class DashboardController < ApplicationController
   def index
     # Define User Data
     if user_signed_in?
-      @events = TimeOff.joins(:user).where('end_date > ?', Date.today).all
+      @events = TimeOff.joins(:user).where('end_date > ?', Date.today).all.order(start_date: :asc)
     end
   end
 end
