@@ -8,6 +8,7 @@
             <h1 class="title">
               Hello, <%= current_user.name %>.
             </h1>
+            <h1><%= @time_off_data  %> </h1>
             <h2 class="subtitle">
               I hope you are having a great day!
             </h2>
@@ -18,7 +19,7 @@
         <div class="tile is-ancestor has-text-centered">
           <div class="tile is-parent">
             <article class="tile is-child box">
-              <p class="title">12</p>
+              <p class="title"><%= current_user.total_days - current_user.days_taken%></p>
               <p class="subtitle">Days Left</p>
             </article>
           </div>
@@ -48,13 +49,7 @@
         <div class="column is-6">
           <div class="card events-card">
             <header class="card-header">
-              <p class="card-header-title">
-                Events
-
-
-
-
-              </p>
+              <p class="card-header-title">Events</p>
               <a href="#" class="card-header-icon" aria-label="more options">
                   <span class="icon">
                     <i class="fa fa-angle-down" aria-hidden="true"></i>
@@ -88,7 +83,25 @@
             <div class="card-content">
               <button id="bookTimeOff" class="button is-block is-info is-large is-fullwidth">Book Now</button>
               <input type="date" id="bookingPicker">
-              <button class="button is-block is-success is-large is-fullwidth">Request Time Off</button>
+              <%= form_tag do %>
+                <%= hidden_field("time_off", "start_date") %>
+                <%= hidden_field("time_off", "end_date") %>
+                <div class="columns">
+                  <div class="column is-one-third">
+                    <div class="select is-large">
+                      <%= select("time_off", "off_type", options_for_select(
+                          {
+                              :Holiday => 0,
+                              :Sick => 1,
+                          }
+                      ))%>
+                    </div>
+                  </div>
+                  <div class="column">
+                    <%= submit_tag("Request Time Off", class: "button is-block is-success is-large is-fullwidth") %>
+                  </div>
+                </div>
+              <% end %>
             </div>
           </div>
           <div class="card">

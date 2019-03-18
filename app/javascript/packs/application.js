@@ -28,6 +28,11 @@ function ready(fn) {
     }
 }
 
+function attach_date_values(dates) {
+    document.getElementById("time_off_start_date").value = dates[0];
+    document.getElementById("time_off_end_date").value = dates[1];
+}
+
 ready(function() {
     let bookingButton = document.getElementById("bookTimeOff");
 
@@ -37,8 +42,7 @@ ready(function() {
     let bookingPicker = calendars[0];
 
     bookingPicker.on("select", function(datePicker) {
-        let dateSelected = datePicker.data.value(); // TODO Figure out how to get end and start date seperately.
-        console.log(dateSelected);
+        attach_date_values(datePicker.data.value().split(' - ')); // TODO Figure out how to get end and start date seperately.
     });
 
     bookingButton.addEventListener("click", function () {

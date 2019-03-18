@@ -6,9 +6,8 @@
   </div>
     <div id="navbarBasicExample" class="navbar-menu">
       <div class="navbar-start">
-        <a class="navbar-item" href="#">
-          Home
-        </a>
+        <%= link_to('Home', root_path, class: 'navbar-item') %>
+        <%= link_to('Requests', 'requests', class: 'navbar-item') %>
         <% if user_signed_in? %>
           <% if current_user.user_level == 'admin' %>
           <a class="navbar-item" href="#">
