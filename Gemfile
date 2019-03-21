@@ -1,15 +1,19 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.5.1'
-
+#ruby '2.5.1' Linux
+ruby '2.6.1' # Windows
+gem 'wdm', '>= 0.1.0' # Windows
 # For user auth
 gem 'devise'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.2', '>= 5.2.2.1'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3', '~> 1.3', '< 1.4' # IMPORTANT
+#
+# gem 'sqlite3', '~> 1.3', '< 1.4' # IMPORTANT Linux
+gem 'sqlite3', git: "https://github.com/larskanis/sqlite3-ruby", branch: "add-gemspec" # Windows
+
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
