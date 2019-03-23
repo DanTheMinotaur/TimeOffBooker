@@ -18,6 +18,7 @@ import 'bulma'
 import bulmaCalendar from 'bulma-calendar';
 import "bulma-calendar/dist/css/bulma-calendar.min.css";
 
+
 console.log('Hello World from Webpacker');
 
 function ready(fn) {
@@ -33,13 +34,20 @@ function attach_date_values(dates) {
     document.getElementById("time_off_end_date").value = dates[1];
 }
 
-ready(function() {
-    let bookingButton = document.getElementById("bookTimeOff");
 
+ready(function() {
+    document.body.addEventListener("ajax:success", function (event) {
+        console.log(event);
+    });
+
+    let bookingButton = document.getElementById("bookTimeOff");
+    let timeOffForm = document.getElementById("timeOffForm");
     const calendars = bulmaCalendar.attach(document.getElementById("bookingPicker"), {
         isRange: true
     });
     let bookingPicker = calendars[0];
+
+
 
     bookingPicker.on("select", function(datePicker) {
         attach_date_values(datePicker.data.value().split(' - ')); // TODO Figure out how to get end and start date seperately.

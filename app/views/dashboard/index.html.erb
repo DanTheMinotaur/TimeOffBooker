@@ -8,7 +8,7 @@
             <h1 class="title">
               Hello, <%= current_user.name %>.
             </h1>
-            <h1><%= @time_off_data  %> </h1>
+            <h1><%= @time_off_data %> </h1>
             <h2 class="subtitle">
               I hope you are having a great day!
             </h2>
@@ -83,7 +83,7 @@
             <div class="card-content">
               <button id="bookTimeOff" class="button is-block is-info is-large is-fullwidth">Book Now</button>
               <input type="date" id="bookingPicker">
-              <%= form_tag do %>
+              <%= form_tag '/', :id => 'timeOffForm', :remote => true do %>
                 <%= hidden_field("time_off", "start_date") %>
                 <%= hidden_field("time_off", "end_date") %>
                 <div class="columns">

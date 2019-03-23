@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  post 'dashboard/index'
+  post '/', to: 'dashboard#request_time_off'
 
   get 'requests', to: 'dashboard#requests'
 

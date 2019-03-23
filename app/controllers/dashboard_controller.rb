@@ -7,19 +7,28 @@ class DashboardController < ApplicationController
       @events = TimeOff.joins(:user).where('end_date > ?', Date.today).all.order(start_date: :asc)
     end
 
+
+  end
+
+
+  def request_time_off
     if params.has_key? :time_off
       time_off_data = params[:time_off]
 
-      TimeOff.create(
-          {user_id: current_user.id,
-           start_date: Date.strptime(time_off_data[:start_date], '%m/%d/%Y'),
-           end_date: Date.strptime(time_off_data[:end_date], '%m/%d/%Y'),
-           off_type: time_off_data[:off_type].to_i
-          }
-      )
+      data_to_add = {
+          user_id: current_user.id,
+          start_date: Date.strptime(time_off_data[:start_date], '%m/%d/%Y'),
+          end_date: Date.strptime(time_off_data[:end_date], '%m/%d/%Y'),
+          off_type: time_off_data[:off_type].to_i
+      }
+
+      if TimeOff.create(data_to_add)
+        respond_to do |format|
+          format.json { render json: "Hello I saved Something"}
+        end
+      end
     end
   end
-
 
   # Handles requests being made to managers or employee made requests.
   def requests
