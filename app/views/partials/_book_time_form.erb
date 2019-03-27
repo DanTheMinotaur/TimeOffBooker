@@ -1,0 +1,20 @@
+<input type="date" id="bookingPicker">
+<%= form_tag '/', :id => 'timeOffForm', :remote => true do %>
+  <%= hidden_field("time_off", "start_date") %>
+  <%= hidden_field("time_off", "end_date") %>
+  <div class="columns">
+    <div class="column is-one-third">
+      <div class="select is-large">
+        <%= select("time_off", "off_type", options_for_select(
+            {
+                :Holiday => 0,
+                :Sick => 1,
+            }
+        ))%>
+      </div>
+    </div>
+    <div class="column">
+      <%= submit_tag("Request Time Off", class: "button is-block is-success is-large is-fullwidth") %>
+    </div>
+  </div>
+<% end %>

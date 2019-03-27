@@ -9,6 +9,7 @@
     "tiny-date-picker": "^3.2.8"
   },
   "devDependencies": {
+    "bulma-quickview": "^2.0.0",
     "webpack-dev-server": "^3.2.1"
   }
 }

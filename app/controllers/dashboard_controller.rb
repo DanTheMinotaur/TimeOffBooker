@@ -6,10 +6,7 @@ class DashboardController < ApplicationController
     if user_signed_in?
       @events = TimeOff.joins(:user).where('end_date > ?', Date.today).all.order(start_date: :asc)
     end
-
-
   end
-
 
   def request_time_off
     if params.has_key? :time_off

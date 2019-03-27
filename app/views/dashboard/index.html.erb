@@ -82,26 +82,7 @@
             </header>
             <div class="card-content">
               <button id="bookTimeOff" class="button is-block is-info is-large is-fullwidth">Book Now</button>
-              <input type="date" id="bookingPicker">
-              <%= form_tag '/', :id => 'timeOffForm', :remote => true do %>
-                <%= hidden_field("time_off", "start_date") %>
-                <%= hidden_field("time_off", "end_date") %>
-                <div class="columns">
-                  <div class="column is-one-third">
-                    <div class="select is-large">
-                      <%= select("time_off", "off_type", options_for_select(
-                          {
-                              :Holiday => 0,
-                              :Sick => 1,
-                          }
-                      ))%>
-                    </div>
-                  </div>
-                  <div class="column">
-                    <%= submit_tag("Request Time Off", class: "button is-block is-success is-large is-fullwidth") %>
-                  </div>
-                </div>
-              <% end %>
+                <%= render 'partials/book_time_form' %>
             </div>
           </div>
           <div class="card">
@@ -117,15 +98,7 @@
             </header>
             <div class="card-content">
               <div class="content">
-                <div class="control has-icons-left has-icons-right">
-                  <input class="input is-large" type="text" placeholder="">
-                  <span class="icon is-medium is-left">
-                      <i class="fa fa-search"></i>
-                    </span>
-                  <span class="icon is-medium is-right">
-                      <i class="fa fa-check"></i>
-                    </span>
-                </div>
+                <%= render 'partials/search_form' %>>
               </div>
             </div>
           </div>

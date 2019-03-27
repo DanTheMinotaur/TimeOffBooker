@@ -1,0 +1,8 @@
+<h1>Search Results</h1>
+<% if @search_user_list %>
+  <% @search_user_list.each do |user| %>
+    <h1><%= user %></h1>
+  <% end %>
+<% else %>
+  <h1>Could not find any results</h1>
+<% end %>

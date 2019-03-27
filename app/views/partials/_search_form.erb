@@ -1,0 +1,14 @@
+<%= form_tag("search") do %>
+  <div class="field">
+  <div class="control has-icons-left has-icons-right">
+  <%= text_field :search, :user, class: "input", placeholder: "Search People" %>
+  <span class="icon is-medium is-left">
+    <i class="fa fa-search"></i>
+  </span>
+  <span class="icon is-medium is-right">
+    <i class="fa fa-check"></i>
+  </span>
+  <%= submit_tag 'Search Users', class: "button is-link" %>
+  </div>
+  </div>
+<% end %>
