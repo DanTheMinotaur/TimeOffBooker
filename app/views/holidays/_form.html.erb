@@ -10,18 +10,29 @@
       </ul>
     </div>
   <% end %>
+      <div class="card">
+        <header class="card-header">
+          <p class="card-header-title">
+            Edit Holiday
+          </p>
+        </header>
+        <div class="card-content">
+          <div class="content">
+            <div class="field select is-multiple">
+              <div class="field-label is-normal">
+                <%= form.label :holiday_date, class: "label" %>
+              </div>
+              <%= form.date_select :holiday_date %>
+            </div>
+            <div>
+              <%= form.label :reason, class: "label" %>
+              <%= form.text_field :reason, class: "input is-medium" %>
+            </div>
+          </div>
+          <footer class="card-footer ">
+            <%= form.submit class: "button is-success" %>
 
-  <div class="field">
-    <%= form.label :holiday_date %>
-    <%= form.date_select :holiday_date %>
-  </div>
-
-  <div class="field">
-    <%= form.label :reason %>
-    <%= form.text_field :reason %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+          </footer>
+        </div>
+      </div>
 <% end %>

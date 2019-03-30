@@ -1,14 +1,27 @@
 <p id="notice"><%= notice %></p>
+<div class="columns">
+  <div class="column is-half is-offset-one-quarter">
+    <div class="card">
+      <header class="card-header">
+        <p class="card-header-title">
+          Holiday
+        </p>
+      </header>
+      <div class="card-content">
+        <div class="content">
+          <strong>Holiday date: </strong>
+            <%= @holiday.holiday_date %>
+          <footer class="card-footer">
+            <strong>Reason: </strong>
+              <%= @holiday.reason %>
+            </footer>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <%= render 'holidays/_partial/edit_delete_link' %>
+  </div>
 
-<p>
-  <strong>Holiday date:</strong>
-  <%= @holiday.holiday_date %>
-</p>
 
-<p>
-  <strong>Reason:</strong>
-  <%= @holiday.reason %>
-</p>
+</div>
 
-<%= link_to 'Edit', edit_holiday_path(@holiday) %> |
-<%= link_to 'Back', holidays_path %>

@@ -1,29 +1,32 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Holidays</h1>
-
-<table>
+<hr>
+<h1 class="title is-1">Holidays</h1>
+<hr>
+<h2 class="subtitle">Here you can view all company holidays or days off!</h2>
+<hr>
+<% if current_user.user_level == "admin" %>
+  <%= link_to 'Add New Holiday', new_holiday_path, class: "button is-success is-large" %>
+<% end %>
+<hr>
+<table class="table is-bordered is-hoverable is-fullwidth">
   <thead>
-    <tr>
+    <tr class="is-size-4">
       <th>Holiday date</th>
       <th>Reason</th>
-      <th colspan="3"></th>
+      <th colspan="3">Info</th>
     </tr>
   </thead>
 
-  <tbody>
+  <tbody class="is-size-3">
     <% @holidays.each do |holiday| %>
-      <tr>
-        <td><%= holiday.holiday_date %></td>
-        <td><%= holiday.reason %></td>
-        <td><%= link_to 'Show', holiday %></td>
-        <td><%= link_to 'Edit', edit_holiday_path(holiday) %></td>
-        <td><%= link_to 'Destroy', holiday, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+        <tr>
+          <td class="is-size-5"><%= holiday.holiday_date %></td>
+          <td class="is-size-5"><%= holiday.reason %></td>
+          <td><%= link_to 'View Details', holiday, class: "button is-primary is-small" %></td>
+          <% if current_user.user_level == "admin" %>
+            <td><%= link_to 'Edit Holiday', edit_holiday_path(holiday), class: "button is-warning is-small" %></td>
+            <td><%= link_to 'Remove Holiday', holiday, method: :delete, data: { confirm: 'Are you sure?' }, class: "button is-danger is-small" %></td>
+          <% end %>
+        </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Holiday', new_holiday_path %>

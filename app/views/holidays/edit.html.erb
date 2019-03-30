@@ -1,6 +1,12 @@
-<h1>Editing Holiday</h1>
-
-<%= render 'form', holiday: @holiday %>
-
-<%= link_to 'Show', @holiday %> |
-<%= link_to 'Back', holidays_path %>
+<h1 class="title is-1">Edit Holiday</h1>
+<hr>
+<h2 class="subtitle">Edit this holiday</h2>
+<hr>
+<div class="columns">
+  <div class="column is-half is-offset-one-quarter">
+    <%= render 'form', holiday: @holiday %>
+    <hr>
+    <%= link_to 'Show', @holiday, class: "button is-primary" %> |
+    <%= link_to 'Back', holidays_path, class: "button is-outlined" %>
+  </div>
+</div>

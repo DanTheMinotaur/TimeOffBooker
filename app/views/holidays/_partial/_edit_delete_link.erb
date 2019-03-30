@@ -1,0 +1,5 @@
+<%= render 'holidays/_partial/back' %>
+<% if current_user.user_level == "admin" %>
+  | <%= link_to 'Edit', edit_holiday_path(@holiday), class: "button is-warning" %> |
+  <%= link_to 'Remove Holiday', @holiday, method: :delete, data: { confirm: 'Are you sure?' }, class: "button is-danger" %>
+<% end %>
