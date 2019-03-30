@@ -14,10 +14,12 @@
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
-import 'bulma'
+import 'bulma';
 import bulmaCalendar from 'bulma-calendar';
 import "bulma-calendar/dist/css/bulma-calendar.min.css";
 
+import bulmaQuickview from "bulma-quickview/dist/js/bulma-quickview";
+import "bulma-quickview/dist/css/bulma-quickview.sass";
 
 console.log('Hello World from Webpacker');
 
@@ -56,4 +58,6 @@ ready(function() {
     bookingButton.addEventListener("click", function () {
         bookingPicker.hide();
     });
+
+    let quickviews = bulmaQuickview.attach();
 });

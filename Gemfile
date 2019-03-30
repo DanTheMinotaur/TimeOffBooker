@@ -3,6 +3,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
 
+# Customer Ruby Gem newapi.ord
+gem 'news.org_api_gem'
+
 # For user auth
 gem 'devise'
 

@@ -1348,6 +1348,16 @@ bulma-calendar@^6.0.3:
     date-and-time "^0.6.3"
     date-fns "^1.29.0"
 
+bulma-extensions@^6.2.4:
+  version "6.2.4"
+  resolved "https://registry.yarnpkg.com/bulma-extensions/-/bulma-extensions-6.2.4.tgz#28f5589055b1c6bf894994f8e8260426e9ac1f0b"
+  integrity sha512-AaG3/OfGgdx03fQDabLadagATVpBvXXhFjiv7lnOd9DzTHRPC3fjlNL3qnVQ8IFS9t428FvS3lAmBmtfQh7ylA==
+
+bulma-quickview@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/bulma-quickview/-/bulma-quickview-2.0.0.tgz#ac85d6cc23f98bd4b4be5cef11e9524554d2bbf3"
+  integrity sha512-EJq9XYcJ+pG94FIYgw9AI2NoRDRjQX/Iua0H3iIJq4C3D+4sVOCg/Y+I7gd/G0v7fez/qvKX/S+91UZqaTmXSQ==
+
 bulma@^0.7.4, bulma@latest:
   version "0.7.4"
   resolved "https://registry.yarnpkg.com/bulma/-/bulma-0.7.4.tgz#7e74512e9118d9799021339e67e365ee0ac4f3f9"

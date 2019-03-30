@@ -2,7 +2,7 @@
 <% if @search_user_list %>
   <h1 class="title">User Search Results for "<%= @search_key %>"</h1>
   <div class="column is-half is-offset-one-quarter">
-    <% @search_user_list.each do |user| %>
+    <% @search_user_list.each_with_index do |user, index| %>
         <div class="card">
         <div class="card-content">
           <div class="media">
@@ -19,9 +19,30 @@
 
           <div class="content">
             <a>@<%= user.job_title %></a>
+
             <br>
             <time datetime="2016-1-1"><%= user.updated_at %></time>
           </div>
+          <footer class="card-footer">
+            <div id="quickView<%= index %>>" class="quickview">
+              <header class="quickview-header">
+                <p class="title">Quickview title</p>
+                <span class="delete" data-dismiss="quickview"></span>
+              </header>
+
+              <div class="quickview-body">
+                <div class="quickview-block">
+                  ...
+                </div>
+              </div>
+
+              <footer class="quickview-footer">
+
+              </footer>
+            </div>
+
+            <button class="card-footer-item" data-show="quickview" data-target="quickView<%= index %>">Show Users Actions</button>
+          </footer>
         </div>
       </div>
     <% end %>

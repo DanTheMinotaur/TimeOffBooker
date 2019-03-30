@@ -15,9 +15,12 @@
   <div class="container">
     <%= render "partials/navigation" %>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-
+    <% if notice %>
+      <div class="message is-success"><p class="message-header"><%= notice %></p></div>
+    <% end %>
+    <% if alert %>
+      <div class="message is-danger"><p class="message-header"><%= alert %></p></div>
+    <% end %>
     <%= yield %>
   </div>
   </body>
