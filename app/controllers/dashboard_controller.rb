@@ -21,7 +21,7 @@ class DashboardController < ApplicationController
 
       if TimeOff.create(data_to_add)
         respond_to do |format|
-          format.json { render json: "Hello I saved Something"}
+          format.json { render json: "Your request for a time off has been sent to be approved "}
         end
       end
     end
@@ -29,11 +29,11 @@ class DashboardController < ApplicationController
 
   # Handles requests being made to managers or employee made requests.
   def requests
-    if current_user.user_level == 'admin'
+    if is_admin?
       @requests = TimeOff.joins(:user).where('approved == false AND end_date > ?', Date.today).all.order(start_date: :asc)
-    elsif current_user.user_level == 'manager'
+    elsif is_manager?
       @requests = nil
-    elsif current_user.user_level == 'employee'
+    elsif is_employee?
       @requests = TimeOff.joins(:user).where('user_id = ?', current_user.id).all.order(start_date: :asc)
     end
   end

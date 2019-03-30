@@ -1,10 +1,11 @@
 class HolidaysController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_holiday, only: [:show, :edit, :update, :destroy]
 
   # GET /holidays
   # GET /holidays.json
   def index
-    @holidays = Holiday.all
+    @holidays = Holiday.all.order(holiday_date: :asc)
   end
 
   # GET /holidays/1
