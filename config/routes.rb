@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :holidays
   devise_for :users
 
   post '/', to: 'dashboard#request_time_off'
