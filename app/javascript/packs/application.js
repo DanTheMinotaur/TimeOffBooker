@@ -18,8 +18,9 @@ import 'bulma';
 import bulmaCalendar from 'bulma-calendar';
 import "bulma-calendar/dist/css/bulma-calendar.min.css";
 
-import bulmaQuickview from "bulma-quickview/dist/js/bulma-quickview";
-import "bulma-quickview/dist/css/bulma-quickview.sass";
+
+// import bulmaQuickview from "bulma-quickview/dist/js/bulma-quickview";
+// import "bulma-quickview/dist/css/bulma-quickview.sass";
 
 console.log('Hello World from Webpacker');
 

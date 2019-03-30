@@ -19,29 +19,11 @@
 
           <div class="content">
             <a>@<%= user.job_title %></a>
-
             <br>
             <time datetime="2016-1-1"><%= user.updated_at %></time>
           </div>
           <footer class="card-footer">
-            <div id="quickView<%= index %>>" class="quickview">
-              <header class="quickview-header">
-                <p class="title">Quickview title</p>
-                <span class="delete" data-dismiss="quickview"></span>
-              </header>
-
-              <div class="quickview-body">
-                <div class="quickview-block">
-                  ...
-                </div>
-              </div>
-
-              <footer class="quickview-footer">
-
-              </footer>
-            </div>
-
-            <button class="card-footer-item" data-show="quickview" data-target="quickView<%= index %>">Show Users Actions</button>
+            <a class="card-footer-item">Show Times off</a>
           </footer>
         </div>
       </div>

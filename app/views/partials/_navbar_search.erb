@@ -1,0 +1,13 @@
+<%= form_tag("search", class: 'is-right') do %>
+  <div class="navbar-item field">
+    <div class="control has-icons-left has-icons-right">
+      <%= text_field :search, :user, class: "input", placeholder: "Search People" %>
+      <span class="icon is-medium is-left">
+    <i class="fa fa-search"></i>
+  </span>
+      <span class="icon is-medium is-right">
+    <i class="fa fa-check"></i>
+  </span>
+    </div>
+  </div>
+<% end %>
