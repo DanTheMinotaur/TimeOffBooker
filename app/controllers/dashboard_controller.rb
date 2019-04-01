@@ -37,7 +37,6 @@ class DashboardController < ApplicationController
         'sortBy': 'popularity'
     })
 
-
   end
 
   # Handles requests being made to managers or employee made requests.
@@ -50,15 +49,15 @@ class DashboardController < ApplicationController
 
   def approve_time_off
     if params.key? :request
+
       request = params[:request]
-      respond_to do |format|
-        format.json { render json: 'Approval Received' + request}
-      end
-      time_off = TimeOff.find(request[:request_id].to_i)
-      time_off.update(approved: request.to_bool, approved_by: request.manager_id.to_i)
-      if time_off.save
+
+      time_off = TimeOff.find(request['request_id'].to_i)
+
+      if time_off.update(approved: request['approval'].to_i, approved_by: request['manager_id'].to_i)
         respond_to do |format|
-          format.json { render json: 'Approval Received'}
+
+          format.json { render json: "Approval Received #{request} #{time_off}" }
         end
       end
     end

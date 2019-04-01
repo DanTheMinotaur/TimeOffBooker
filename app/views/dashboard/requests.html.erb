@@ -32,12 +32,12 @@
       <% if is_admin? %>
         <div class="column">
           <% @to_be_approved_requests.each do |request| %>
-            <div class="box">
+            <div class="box" id="request-<%= request.id %>">
               <h4 class="title is-3"><%= request.user.name  %>(<%= request.user.job_title %>) </h4>
               <article class="message is-info">
                 <div class="message-body">
                   Requests a <%= request.off_type %> from <%= request.start_date %> to <%= request.end_date %>
-                  <%= form_tag '/' do %>
+                  <%= form_tag '/requests/approve', :remote => true do %>
                     <section class="columns">
                       <div class="column is-one-third">
                         <div class="select is-large">

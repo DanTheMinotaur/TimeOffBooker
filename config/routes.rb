@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   post 'search', to: 'search#index'
   get 'search', to: 'search#index'
 
-  post 'requests', to: 'dashboard#approve_time_off'
+  post 'requests/approve', to: 'dashboard#approve_time_off'
 
   get 'news', to: 'dashboard#news'
 
