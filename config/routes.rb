@@ -2,6 +2,12 @@ Rails.application.routes.draw do
   resources :holidays
   devise_for :users
 
+  resource :users, only: [:edit] do
+    collection do
+      patch 'update_password'
+    end
+  end
+
   post '/', to: 'dashboard#request_time_off'
 
   get 'requests', to: 'dashboard#requests'

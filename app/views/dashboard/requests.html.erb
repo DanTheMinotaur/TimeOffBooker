@@ -45,8 +45,8 @@
                           <%= hidden_field("request", "manager_id", :value => current_user.id) %>
                           <%= select("request", "approval", options_for_select(
                               {
-                                  :Approve => true,
-                                  :Deny => false,
+                                  :Approve => 1,
+                                  :Deny => 0,
                               }
                           ))%>
                         </div>

@@ -50,6 +50,9 @@ function removeRequestElement(id) {
 }
 
 
+/**
+ * Main function for JS application.
+ */
 ready(function() {
     document.body.addEventListener("ajax:success", function (event) {
         console.log(event.detail);
