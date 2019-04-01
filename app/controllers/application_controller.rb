@@ -14,6 +14,10 @@ class ApplicationController < ActionController::Base
     current_user.user_level == 'admin'
   end
 
+  def generate_ajax_response(type, identity)
+    { type: type, identity: identity }
+  end
+
   helper_method :is_employee?
   helper_method :is_manager?
   helper_method :is_admin?

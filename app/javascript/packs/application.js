@@ -18,12 +18,6 @@ import 'bulma';
 import bulmaCalendar from 'bulma-calendar';
 import "bulma-calendar/dist/css/bulma-calendar.min.css";
 
-
-// import bulmaQuickview from "bulma-quickview/dist/js/bulma-quickview";
-// import "bulma-quickview/dist/css/bulma-quickview.sass";
-
-console.log('Hello World from Webpacker');
-
 function ready(fn) {
     if (document.readyState != 'loading'){
         fn();
@@ -32,19 +26,44 @@ function ready(fn) {
     }
 }
 
-function attach_date_values(dates) {
+/**
+ * Collects Date from program.
+ * @param dates
+ */
+function attachDateValues(dates) {
     document.getElementById("time_off_start_date").value = dates[0];
     document.getElementById("time_off_end_date").value = dates[1];
+}
+
+/**
+ * Removes a Request html element from the DOM.
+ * @param id element id
+ */
+function removeRequestElement(id) {
+    let ElmID = "request-" + id;
+    let requestElm = document.getElementById(ElmID);
+    if (requestElm != null) {
+        requestElm.remove();
+    } else {
+        console.log("Element ${ElmID} does not exist");
+    }
 }
 
 
 ready(function() {
     document.body.addEventListener("ajax:success", function (event) {
-        console.log(event);
+        console.log(event.detail);
+        let response = event.detail[0];
+
+        if ("type" in response) {
+            switch (response.type) {
+                case "approval":
+                    removeRequestElement(response.identity);
+            }
+        }
+
     });
 
-
-    let timeOffForm = document.getElementById("timeOffForm");
     let calandarElem = document.getElementById("bookingPicker");
 
     if (calandarElem != null) {
@@ -54,7 +73,7 @@ ready(function() {
         });
         let bookingPicker = calendars[0];
         bookingPicker.on("select", function(datePicker) {
-            attach_date_values(datePicker.data.value().split(' - ')); // TODO Figure out how to get end and start date seperately.
+            attachDateValues(datePicker.data.value().split(' - ')); // TODO Figure out how to get end and start date seperately.
         });
 
         bookingButton.addEventListener("click", function () {

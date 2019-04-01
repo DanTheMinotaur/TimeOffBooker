@@ -57,7 +57,7 @@ class DashboardController < ApplicationController
       if time_off.update(approved: request['approval'].to_i, approved_by: request['manager_id'].to_i)
         respond_to do |format|
 
-          format.json { render json: "Approval Received #{request} #{time_off}" }
+          format.json { render json: generate_ajax_response('approval', request['request_id'].to_i) }
         end
       end
     end
