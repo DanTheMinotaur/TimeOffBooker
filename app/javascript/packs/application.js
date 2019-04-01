@@ -43,22 +43,22 @@ ready(function() {
         console.log(event);
     });
 
-    let bookingButton = document.getElementById("bookTimeOff");
+
     let timeOffForm = document.getElementById("timeOffForm");
-    const calendars = bulmaCalendar.attach(document.getElementById("bookingPicker"), {
-        isRange: true
-    });
-    let bookingPicker = calendars[0];
+    let calandarElem = document.getElementById("bookingPicker");
 
+    if (calandarElem != null) {
+        let bookingButton = document.getElementById("bookTimeOff");
+        const calendars = bulmaCalendar.attach(document.getElementById("bookingPicker"), {
+            isRange: true
+        });
+        let bookingPicker = calendars[0];
+        bookingPicker.on("select", function(datePicker) {
+            attach_date_values(datePicker.data.value().split(' - ')); // TODO Figure out how to get end and start date seperately.
+        });
 
-
-    bookingPicker.on("select", function(datePicker) {
-        attach_date_values(datePicker.data.value().split(' - ')); // TODO Figure out how to get end and start date seperately.
-    });
-
-    bookingButton.addEventListener("click", function () {
-        bookingPicker.hide();
-    });
-
-    let quickviews = bulmaQuickview.attach();
+        bookingButton.addEventListener("click", function () {
+            bookingPicker.hide();
+        });
+    }
 });

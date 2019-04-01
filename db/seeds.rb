@@ -32,6 +32,6 @@ time_offs = TimeOff.create(
 
 approvals = Approval.create(
     [
-        {}
+
     ]
 )

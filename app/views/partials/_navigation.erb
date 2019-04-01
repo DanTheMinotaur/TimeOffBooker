@@ -9,6 +9,7 @@
         <%= link_to('Home', root_path, class: 'navbar-item') %>
         <%= link_to('Requests', 'requests', class: 'navbar-item') %>
         <%= link_to('Holidays', 'holidays', class: 'navbar-item') %>
+        <%= link_to('News', 'news', class: 'navbar-item') %>
         <% if user_signed_in? %>
           <% if current_user.user_level == 'admin' %>
           <a class="navbar-item" href="#">

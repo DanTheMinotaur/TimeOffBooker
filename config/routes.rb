@@ -9,6 +9,10 @@ Rails.application.routes.draw do
   post 'search', to: 'search#index'
   get 'search', to: 'search#index'
 
+  post 'requests', to: 'dashboard#approve_time_off'
+
+  get 'news', to: 'dashboard#news'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root to: 'dashboard#index'

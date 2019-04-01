@@ -1,3 +1,5 @@
+require 'news_api'
+
 class DashboardController < ApplicationController
   before_action :authenticate_user!
 
@@ -9,7 +11,7 @@ class DashboardController < ApplicationController
   end
 
   def request_time_off
-    if params.has_key? :time_off
+    if params.key? :time_off
       time_off_data = params[:time_off]
 
       data_to_add = {
@@ -27,14 +29,38 @@ class DashboardController < ApplicationController
     end
   end
 
+  def news
+    newsapi = NewsAPI.new 'e559847227d34d69b34f8f53cc73c7fe'
+
+    @news_data = newsapi.get('business', {
+        'from': '2019-02-28',
+        'sortBy': 'popularity'
+    })
+
+
+  end
+
   # Handles requests being made to managers or employee made requests.
   def requests
+    @user_own_requests = TimeOff.joins(:user).where('user_id = ?', current_user.id).all.order(start_date: :asc)
     if is_admin?
-      @requests = TimeOff.joins(:user).where('approved == false AND end_date > ?', Date.today).all.order(start_date: :asc)
-    elsif is_manager?
-      @requests = nil
-    elsif is_employee?
-      @requests = TimeOff.joins(:user).where('user_id = ?', current_user.id).all.order(start_date: :asc)
+      @to_be_approved_requests = TimeOff.joins(:user).where('approved IS NULL AND end_date > ?', Date.today).all.order(start_date: :asc)
+    end
+  end
+
+  def approve_time_off
+    if params.key? :request
+      request = params[:request]
+      respond_to do |format|
+        format.json { render json: 'Approval Received' + request}
+      end
+      time_off = TimeOff.find(request[:request_id].to_i)
+      time_off.update(approved: request.to_bool, approved_by: request.manager_id.to_i)
+      if time_off.save
+        respond_to do |format|
+          format.json { render json: 'Approval Received'}
+        end
+      end
     end
   end
 end

@@ -1,30 +1,67 @@
 <div class="column is-12">
   <div class="content is-medium">
     <h3 class="title is-3">Requests</h3>
-    <% @requests.each do |request| %>
-      <div class="box">
-        <h4 class="title is-3"><%= request.user.name  %>(<%= request.user.job_title %>) </h4>
-        <article class="message is-primary">
-          <div class="message-body">
-            Requests a <%= request.off_type %> from <%= request.start_date %> to <%= request.end_date %>
-          </div>
-          <% if current_user.user_level == 'manager' || current_user.user_level == 'admin' %>
-            <section class="section">
-              <button class="button is-success is-half">Approve Request</button>
-              <button class="button is-danger is-half">Deny Request</button>
-            </section>
+    <section class="columns">
+      <div class="column">
+        <% @user_own_requests.each do |request| %>
+        <div class="box">
+          <h4 class="title is-3"><%= request.user.name  %>(<%= request.user.job_title %>) </h4>
+          <% if request.approved == nil%>
+            <!--<%= styling = "" %>-->
+          <% elsif request.approved %>
+            <!--<%= styling = "is-success" %>-->
           <% else %>
-            <section class="section">
-              <% if request.approved %>
-                <button class="button is-success is-half">Request was approved on <%= request.updated_at %></button>
-              <% else %>
-                <button class="button is-danger is-half">Request was denied on <%= request.updated_at %></button>
-              <% end %>
-            </section>
+            <!--<%= styling = "is-danger" %>-->
           <% end %>
-        </article>
+          <article class="message <%= styling %>">
+            <div class="message-body">
+              <% if request.approved == nil  %>
+                Requests a <%= request.off_type %> from <%= request.start_date %> to <%= request.end_date %>
+              <% else %>
+                <% if request.approved  %>
+                  Your <%= request.off_type %> request has been approved for <%= request.start_date %> til <%= request.end_date %>
+                <% else %>
+                  Your <%= request.off_type %> request has been denied for <%= request.start_date %> til <%= request.end_date %>
+                <% end %>
+              <% end %>
+            </div>
+          </article>
+        </div>
+        <% end %>
       </div>
-    <% end %>
-
+      <% if is_admin? %>
+        <div class="column">
+          <% @to_be_approved_requests.each do |request| %>
+            <div class="box">
+              <h4 class="title is-3"><%= request.user.name  %>(<%= request.user.job_title %>) </h4>
+              <article class="message is-info">
+                <div class="message-body">
+                  Requests a <%= request.off_type %> from <%= request.start_date %> to <%= request.end_date %>
+                  <%= form_tag '/' do %>
+                    <section class="columns">
+                      <div class="column is-one-third">
+                        <div class="select is-large">
+                          <%= hidden_field("request", "request_id", :value => request.id) %>
+                          <%= hidden_field("request", "manager_id", :value => current_user.id) %>
+                          <%= select("request", "approval", options_for_select(
+                              {
+                                  :Approve => true,
+                                  :Deny => false,
+                              }
+                          ))%>
+                        </div>
+                      </div>
+                      <div class="column">
+                        <%= submit_tag("Send Response", class: "button is-block is-success is-large is-fullwidth") %>
+                      </div>
+                    </section>
+                  <% end %>
+                </div>
+              </article>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </section>
   </div>
 </div>

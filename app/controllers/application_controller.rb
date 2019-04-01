@@ -4,7 +4,6 @@ class ApplicationController < ActionController::Base
 
   def is_employee?
     current_user.user_level == 'employee'
-
   end
 
   def is_manager?
@@ -14,4 +13,8 @@ class ApplicationController < ActionController::Base
   def is_admin?
     current_user.user_level == 'admin'
   end
+
+  helper_method :is_employee?
+  helper_method :is_manager?
+  helper_method :is_admin?
 end

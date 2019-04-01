@@ -1,0 +1,31 @@
+<hr>
+<h1 class="title is-1">News Room</h1>
+<hr>
+<h2 class="subtitle">Read some company approved news! </h2>
+<hr>
+<section class="container">
+  <% @news_data['articles'].each_slice(3) do |articles| %>
+  <div class="columns features">
+    <%#= article %>
+      <% articles.each do |article| %>
+      <div class="column is-4">
+        <div class="card is-shady">
+          <div class="card-image">
+            <figure class="image is-4by3">
+              <img src="<%= article['urlToImage'] %>" alt="Placeholder image" class="modal-button" data-target="modal-image2">
+            </figure>
+          </div>
+          <div class="card-content">
+            <div class="content">
+              <h4><%= article['title'] %></h4>
+              <p><%= article['description']%></p>
+              <a href="<%= article['url'] %>" class="button is-link modal-button" data-target="modal-image2">Read</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    </div>
+    <hr>
+   <% end %>
+</section>

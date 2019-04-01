@@ -1,0 +1,18 @@
+<%# Form for manager/admin to approve time off requests %>
+<%= form_tag '/', :remote => true do %>
+<section class="columns">
+  <div class="column is-one-third">
+    <div class="select is-large">
+      <%= select("request", "approval", options_for_select(
+          {
+              :Approve => 0,
+              :Deny => 1,
+          }
+      ))%>
+    </div>
+  </div>
+  <div class="column">
+    <%= submit_tag("Send Response", class: "button is-block is-success is-large is-fullwidth") %>
+  </div>
+</section>
+<% end %>

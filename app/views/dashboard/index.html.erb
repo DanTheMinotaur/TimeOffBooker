@@ -5,13 +5,9 @@
       <section class="hero is-info welcome is-small">
         <div class="hero-body">
           <div class="container">
-            <h1 class="title">
-              Hello, <%= current_user.name %>.
-            </h1>
+            <h1 class="title">Hello, <%= current_user.name %>.</h1>
             <h1><%= @time_off_data %> </h1>
-            <h2 class="subtitle">
-              I hope you are having a great day!
-            </h2>
+            <h2 class="subtitle">I hope you are having a great day!</h2>
           </div>
         </div>
       </section>
@@ -35,7 +31,7 @@
               <p class="subtitle">Days Taken</p>
             </article>
           </div>
-          <% if current_user.user_level == "admin" or current_user.user_level == 'manager' %>
+          <% if is_admin? or is_manager? %>
           <div class="tile is-parent">
             <article class="tile is-child box">
               <p class="title"><%= current_user.user_level %></p>
