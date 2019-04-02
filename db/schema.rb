@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_30_170723) do
+ActiveRecord::Schema.define(version: 2019_04_02_210100) do
 
   create_table "approvals", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 2019_03_30_170723) do
     t.integer "approved_by"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "days_taken", default: 0
     t.index ["user_id"], name: "index_time_offs_on_user_id"
   end
 
