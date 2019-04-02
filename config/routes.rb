@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   post 'requests/approve', to: 'dashboard#approve_time_off'
 
   get 'news', to: 'dashboard#news'
+  get 'admin/users', to: 'admin#users'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 

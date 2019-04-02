@@ -1,4 +1,5 @@
 require 'news_api'
+require 'holiday_calulator'
 
 class DashboardController < ApplicationController
   before_action :authenticate_user!
@@ -11,9 +12,10 @@ class DashboardController < ApplicationController
   end
 
   def request_time_off
+    ##
+    # Handles Holiday Booking Requests calculates number of days user is taking,
     if params.key? :time_off
       time_off_data = params[:time_off]
-
       data_to_add = {
           user_id: current_user.id,
           start_date: Date.strptime(time_off_data[:start_date], '%m/%d/%Y'),
@@ -21,9 +23,14 @@ class DashboardController < ApplicationController
           off_type: time_off_data[:off_type].to_i
       }
 
+      company_holidays = Holiday.pluck(:holiday_date)
+
+      holiday = HolidayCalulator.new(data_to_add[:start_date], data_to_add[:end_date], company_holidays)
+      data_to_add[:days_taken] = holiday.total_days
+
       if TimeOff.create(data_to_add)
         respond_to do |format|
-          format.json { render json: "Your request for a time off has been sent to be approved "}
+          format.json { render json: generate_ajax_response('request','request-received')}
         end
       end
     end

@@ -1,8 +1,12 @@
 <div class="column is-12">
   <div class="content is-medium">
-    <h3 class="title is-3">Requests</h3>
+    <%= render 'partials/heading', heading: 'Requests' %>
+
     <section class="columns">
+      <% unless @user_own_requests.empty? %>
       <div class="column">
+        <h3>Your Pending Requests</h3>
+        <hr>
         <% @user_own_requests.each do |request| %>
         <div class="box">
           <h4 class="title is-3"><%= request.user.name  %>(<%= request.user.job_title %>) </h4>
@@ -29,14 +33,17 @@
         </div>
         <% end %>
       </div>
-      <% if is_admin? %>
+      <% end %>
+      <% if is_admin? and !@to_be_approved_requests.empty? %>
         <div class="column">
+          <h3>Requests you can approve</h3>
+          <hr>
           <% @to_be_approved_requests.each do |request| %>
             <div class="box" id="request-<%= request.id %>">
               <h4 class="title is-3"><%= request.user.name  %>(<%= request.user.job_title %>) </h4>
               <article class="message is-info">
                 <div class="message-body">
-                  Requests a <%= request.off_type %> from <%= request.start_date %> to <%= request.end_date %>
+                  Requests a <%= request.off_type %> from <%= request.start_date %> to <%= request.end_date %> for <%= request.days_taken %> days
                   <%= form_tag '/requests/approve', :remote => true do %>
                     <section class="columns">
                       <div class="column is-one-third">

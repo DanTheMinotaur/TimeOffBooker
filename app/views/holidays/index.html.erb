@@ -1,8 +1,4 @@
-<hr>
-<h1 class="title is-1">Holidays</h1>
-<hr>
-<h2 class="subtitle">Here you can view all company holidays or days off!</h2>
-<hr>
+<%= render 'partials/heading', heading: 'Holidays', subheading: 'Here you can view all company holidays or days off!' %>
 <% if current_user.user_level == "admin" %>
   <%= link_to 'Add New Holiday', new_holiday_path, class: "button is-success is-large" %>
 <% end %>

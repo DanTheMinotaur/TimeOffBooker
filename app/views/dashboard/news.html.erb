@@ -1,8 +1,4 @@
-<hr>
-<h1 class="title is-1">News Room</h1>
-<hr>
-<h2 class="subtitle">Read some company approved news! </h2>
-<hr>
+<%= render 'partials/heading', heading: 'Requests', subheading: 'Read some company approved news!' %>
 <section class="container">
   <% @news_data['articles'].each_slice(3) do |articles| %>
   <div class="columns features">
