@@ -2,8 +2,15 @@ require File.expand_path('../../config/environment',  __FILE__)
 require '../app/models/time_off'
 
 class HolidayCalulator
+  ##
+  # Class for calculating total holidays
   def initialize(start_date, end_date, holidays = [])
-    calculate_total_days(start_date, end_date, holidays)
+    @total_days = calculate_total_days(start_date, end_date, holidays)
+  end
+
+  def total_days
+    # getter for returning holidays
+    @total_days
   end
 
   def calculate_total_days(start_date, end_date, holidays)
@@ -17,8 +24,6 @@ class HolidayCalulator
         end
         holiday_count += 1
       end
-
-      puts date
     end
     holiday_count
   end
@@ -26,8 +31,6 @@ end
 
 dates = TimeOff.find(1)
 
-puts(dates['start_date'].class)
+obj = HolidayCalulator.new(dates['start_date'], dates['end_date'], [Date.new(2019, 03, 20), Date.new(2019, 03, 19)])
 
-obj = HolidayCalulator.new(dates['start_date'], dates['end_date'], [Date.new(2019, 03, 20)])
-
-puts obj
+puts obj.total_days
