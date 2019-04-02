@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :profiles
   resources :holidays
   devise_for :users
 
@@ -19,6 +20,7 @@ Rails.application.routes.draw do
 
   get 'news', to: 'dashboard#news'
   get 'admin/users', to: 'admin#users'
+  get 'admin/populate', to: 'admin#populate'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 

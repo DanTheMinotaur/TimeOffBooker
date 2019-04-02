@@ -1,0 +1,5 @@
+<%= render 'partials/heading', heading: 'Populate Holidays', sub_heading: 'Public Holidays List courtesy of calendarific.com' %>
+
+<% @holidays['response']['holidays'].each do |holiday| %>
+  <%= holiday %>
+<% end %>

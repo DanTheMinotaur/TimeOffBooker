@@ -5,6 +5,7 @@ ruby '2.5.1'
 
 # Customer Ruby Gem newapi.ord
 gem 'news.org_api_gem'
+gem 'calerific_gem'
 
 gem 'ruby-calendarific', '~> 1.0', '>= 1.0.1'
 

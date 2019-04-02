@@ -1,1 +1,5 @@
-<%= @users %>
+
+<%= render 'partials/heading', heading: 'Company Users', subheading: 'Viewing all users' %>
+<% @users.each do |user| %>
+  <%= render 'partials/user_card', name: user.name, email: user.email, updated_at: user.updated_at, job_title: user.job_title %>
+<% end %>
