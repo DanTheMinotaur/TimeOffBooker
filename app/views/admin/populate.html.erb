@@ -1,5 +1,28 @@
 <%= render 'partials/heading', heading: 'Populate Holidays', sub_heading: 'Public Holidays List courtesy of calendarific.com' %>
+<h3>List Holdays for <%= Date.today.year %></h3>
+<hr>
+<form method="post" action="/admin">
+<div class="columns">
+  <div class="column is-half is-offset-one-quarter">
+    <% @holidays['response']['holidays'].each do |holiday| %>
+      <div class="box">
+        <article class="media">
+          <div class="media-content">
+            <div class="content">
+              <p>
+                <strong><%= holiday['name'] %></strong> | <small><%= holiday['date']['iso'] %></small> | <label class="checkbox"><input type="checkbox" class="checkbox" name="holidays[]" value="<%= holiday['date']['iso'] %>" checked/>Import Holiday</label>
+                <br>
+                <%= holiday['description'] %>
+              </p>
+            </div>
+          </div>
+        </article>
+      </div>
+    <% end %>
+    <div class="box has-text-centered">
+      <input type="submit" class="button is-success is-large">
+    </div>
+  </div>
+</div>
 
-<% @holidays['response']['holidays'].each do |holiday| %>
-  <%= holiday %>
-<% end %>
+</form>
