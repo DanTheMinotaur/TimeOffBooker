@@ -12,9 +12,7 @@
         <%= link_to('News', '/news', class: 'navbar-item') %>
         <% if user_signed_in? %>
           <% if current_user.user_level == 'admin' %>
-          <a class="navbar-item" href="#">
-            Admin
-          </a>
+            <%= link_to('Admin', '/admin', class: 'navbar-item') %>
             <% end %>
         <% end %>
           <%= render('partials/navbar_search') %>

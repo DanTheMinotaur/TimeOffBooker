@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_02_210100) do
+ActiveRecord::Schema.define(version: 2019_04_03_220156) do
 
   create_table "approvals", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2019_04_02_210100) do
     t.string "reason"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["holiday_date"], name: "index_holidays_on_holiday_date", unique: true
   end
 
   create_table "time_offs", force: :cascade do |t|

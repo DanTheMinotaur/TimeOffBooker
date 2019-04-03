@@ -1,0 +1,27 @@
+<%= render 'partials/heading', heading: 'Admin Panel', sub_heading: 'Only Special People are allowed here' %>
+<section class="info-tiles">
+  <div class="tile is-ancestor has-text-centered">
+    <div class="tile is-parent">
+      <article class="tile is-child box">
+        <%= link_to('Users', '/admin/users', class: 'button is-large is-fullwidth') %>
+      </article>
+    </div>
+    <div class="tile is-parent">
+      <article class="tile is-child box">
+        <%= link_to('Populate Holidays', '/admin/populate', class: 'button is-large is-fullwidth') %>
+      </article>
+    </div>
+    <div class="tile is-parent">
+      <article class="tile is-child box">
+        <p class="title">3.4k</p>
+        <p class="subtitle">Open Orders</p>
+      </article>
+    </div>
+    <div class="tile is-parent">
+      <article class="tile is-child box">
+        <p class="title">19</p>
+        <p class="subtitle">Exceptions</p>
+      </article>
+    </div>
+  </div>
+</section>
