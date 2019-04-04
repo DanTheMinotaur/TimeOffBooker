@@ -6,6 +6,6 @@ class User < ApplicationRecord
 
   enum user_level: { unassigned: 0, employee: 1, manager: 2, admin: 3 }
 
-  #has_many :time_offs, through: :approvals
   has_many :time_offs
+  has_and_belongs_to_many(:users, :join_table => 'approvals', :foreign_key => 'user_id', :association_foreign_key => 'manager_id')
 end
