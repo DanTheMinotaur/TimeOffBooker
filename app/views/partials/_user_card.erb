@@ -7,7 +7,11 @@
         </figure>
       </div>
       <div class="media-content">
-        <p class="title is-4"><%= name %></p>
+        <p class="title is-4"><%= name %> |
+        <% if is_admin? %>
+          <%= user_level %>
+        <% end %>
+        </p>
         <p class="subtitle is-6"><a href="mailto:<%= email %>"><%= email %></a></p>
       </div>
     </div>
@@ -19,6 +23,13 @@
     </div>
     <footer class="card-footer">
       <a class="card-footer-item">Show Times off</a>
+      <% if is_admin? and user_level == 'manager' %>
+        <%= form_tag '/admin/permission' do %>
+          <input type="hidden" value="<%= user_id %>" name="manager_id">
+          <a class="card-footer-item" onclick="parentNode.submit();">Manager Permissions</a>
+        <% end %>
+
+      <% end %>
     </footer>
   </div>
 </div>

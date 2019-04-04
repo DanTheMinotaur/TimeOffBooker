@@ -1,5 +1,9 @@
 
 <%= render 'partials/heading', heading: 'Company Users', subheading: 'Viewing all users' %>
+<div class="column is-12">
+  <div class="content is-medium">
 <% @users.each do |user| %>
-  <%= render 'partials/user_card', name: user.name, email: user.email, updated_at: user.updated_at, job_title: user.job_title %>
+  <%= render 'partials/user_card', name: user.name, email: user.email, updated_at: user.updated_at, job_title: user.job_title, user_level: user.user_level, user_id: user.id %>
 <% end %>
+  </div>
+</div>

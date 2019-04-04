@@ -23,6 +23,9 @@ Rails.application.routes.draw do
   get 'admin/users', to: 'admin#users'
   get 'admin/populate', to: 'admin#populate'
   post 'admin/populate', to: 'admin#populate_holidays'
+  get 'admin/permission', to: 'admin#permission'
+  post 'admin/permission', to: 'admin#permission'
+  post 'admin/grant_permissions', to: 'admin#grant_permissions'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 

@@ -1,0 +1,24 @@
+<% if @permissions %>
+  <%= render 'partials/heading', heading: 'Manager Permission', sub_heading: 'Control Permissions for ' + @permissions['manager'][0]['name'].to_s %>
+  <p>Click the Checkboxes to Add Permissions to Manager</p>
+  <%= form_tag '/admin/grant_permissions' do %>
+    <div class="list is-hoverable">
+      <input type="hidden" value="<%= @permissions['manager'][0]['id'] %>" name="manager_id">
+      <% @permissions['users'].each do |user| %>
+      <div class="list-item">
+        <label><%= user['name'] %> | <%= user['job_title'] %> | <span class="has-text-left">Grant Permission <input class="checkbox" type="checkbox" name="permissions[]"  value="<%= user['id'] %>"></span></label>
+      </div>
+      <% end %>
+    </div>
+    <div class="box has-text-centered">
+      <input type="submit" class="button is-success is-large" value="Add Permissions">
+    </div>
+  <% end %>
+  <%= @permissions.to_s %>
+<% elsif @managers %>
+  <%= render 'partials/heading', heading: 'Manager Permission', sub_heading: 'Control Permissions ' %>
+  <%= @mangers %>>
+<% else  %>
+  <%= render 'partials/heading', heading: 'Manager Permission', sub_heading: 'Permissions ' %>
+  <p>Select a Manager to apply Permissions to</p>
+<% end %>
