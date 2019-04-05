@@ -34,8 +34,8 @@
           <% if is_admin? or is_manager? %>
           <div class="tile is-parent">
             <article class="tile is-child box">
-              <p class="title"><%= current_user.user_level %></p>
-              <p class="subtitle">Requests</p>
+              <p class="title"><%= current_user.user_level.capitalize %></p>
+              <p class="subtitle">User Status</p>
             </article>
           </div>
           <% end %>

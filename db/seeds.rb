@@ -12,7 +12,11 @@ users = User.create(
         { name: 'Tom Riddle', job_title: 'Drone', total_days: 15, user_level: 1, email: 'tomriddle@gmail.com', needs_approval: true, :password => "111111", :password_confirmation => "111111"  },
         { name: 'Sarah Parker', job_title: 'Programmer', total_days: 20, user_level: 1, email: 'sp@gmail.com', needs_approval: true, :password => "111111", :password_confirmation => "111111"  },
         { name: 'John Cheese', job_title: 'Customer Service', total_days: 25, user_level: 1, email: 'jc@gmail.com', needs_approval: true, :password => "111111", :password_confirmation => "111111"  },
-        { name: 'Alana Peter', job_title: 'Manager', total_days: 20, user_level: 2, email: 'alanap@gmail.com', needs_approval: true, :password => "111111", :password_confirmation => "111111"  }
+        { name: 'Alana Peter', job_title: 'Manager', total_days: 20, user_level: 2, email: 'alanap@gmail.com', needs_approval: true, :password => "111111", :password_confirmation => "111111"  },
+        { name: 'Paul Jacob', job_title: 'Customer Service', total_days: 20, user_level: 1, email: 'cheese@gmail.com', needs_approval: true, :password => "111111", :password_confirmation => "111111"  },
+        { name: 'Alan Cheese', job_title: 'Manager of Managers', total_days: 20, user_level: 2, email: 'board@gmail.com', needs_approval: true, :password => "111111", :password_confirmation => "111111"  },
+        { name: 'John Mcclaine', job_title: 'Customer Service', total_days: 20, user_level: 1, email: 'nap@gmail.com', needs_approval: true, :password => "111111", :password_confirmation => "111111"  },
+        { name: 'Bert Sompson', job_title: 'Credit Control', total_days: 20, user_level: 1, email: 'goal@gmail.com', needs_approval: true, :password => "111111", :password_confirmation => "111111"  }
     ]
 )
 
@@ -26,12 +30,15 @@ time_offs = TimeOff.create(
         {user_id: 3, start_date: Date.new(2019, 05, 20), end_date: Date.new(2019, 05, 22), note: "Cheeseburger", approved: true, approved_by: 5},
         {user_id: 4, start_date: Date.new(2019, 06, 20), end_date: Date.new(2019, 06, 23), note: "Cheeseburger", approved: false},
         {user_id: 4, start_date: Date.new(2019, 07, 30), end_date: Date.new(2019, 8, 02), note: "Cheeseburger", approved: false},
-        {user_id: 5, start_date: Date.new(2019, 9, 17), end_date: Date.new(2019, 9, 18), note: "Cheeseburger", approved: true, approved_by: 1},
+        {user_id: 5, start_date: Date.new(2019, 9, 17), end_date: Date.new(2019, 9, 18), note: "Cheeseburger", approved: true, approved_by: 1}
     ]
 )
 
 approvals = Approval.create(
     [
-
+        {manager_id: 7, user_id: 8},
+        {manager_id: 7, user_id: 2},
+        {manager_id: 7, user_id: 3},
+        {manager_id: 5, user_id: 9}
     ]
 )

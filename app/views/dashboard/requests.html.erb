@@ -34,7 +34,7 @@
         <% end %>
       </div>
       <% end %>
-      <% if is_admin? and !@to_be_approved_requests.empty? %>
+      <% if is_admin? || is_manager? and !@to_be_approved_requests.empty? %>
         <div class="column">
           <h3>Requests you can approve</h3>
           <hr>

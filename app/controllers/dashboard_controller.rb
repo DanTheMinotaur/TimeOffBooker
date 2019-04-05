@@ -48,8 +48,11 @@ class DashboardController < ApplicationController
 
   # Handles requests being made to managers or employee made requests.
   def requests
-    @user_own_requests = TimeOff.joins(:user).where('user_id = ?', current_user.id).all.order(start_date: :asc)
+    user_id = current_user.id
+    @user_own_requests = TimeOff.joins(:user).where('user_id = ?', user_id).all.order(start_date: :asc)
     if is_admin?
+      @to_be_approved_requests = TimeOff.joins(:user).where('approved IS NULL AND end_date > ?', Date.today).all.order(start_date: :asc)
+    elsif is_manager?
       @to_be_approved_requests = TimeOff.joins(:user).where('approved IS NULL AND end_date > ?', Date.today).all.order(start_date: :asc)
     end
   end
