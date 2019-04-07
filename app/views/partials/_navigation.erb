@@ -6,24 +6,28 @@
   </div>
     <div class="navbar-menu">
       <div class="navbar-start">
+        <% if user_signed_in? %>
         <%= link_to('Home', root_path, class: 'navbar-item') %>
         <%= link_to('Requests', '/requests', class: 'navbar-item') %>
         <%= link_to('Holidays', '/holidays', class: 'navbar-item') %>
         <%= link_to('News', '/news', class: 'navbar-item') %>
-        <% if user_signed_in? %>
+
           <% if current_user.user_level == 'admin' %>
             <%= link_to('Admin', '/admin', class: 'navbar-item') %>
             <% end %>
-        <% end %>
           <%= render('partials/navbar_search') %>
+        <% end %>
+
 
       </div>
-
-      <% if user_signed_in? %>
       <div class="navbar-end">
+      <% if user_signed_in? %>
+
         <%= link_to "Change your password", edit_user_registration_path, class: 'navbar-item' %>
         <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "navbar-item") %>
-      </div>
+
       <% end %>
+        <%= link_to('Login', new_user_session_path, class: "navbar-item")  %>
+      </div>
   </div>
 </nav>
