@@ -6,14 +6,14 @@ ruby '2.5.1'
 group :production do
   gem 'pg'
   gem 'rails_12factor'
-  #gem 'news.org_api_gem', :path => 'vendor/NewsGem'
+  gem 'news.org_api_gem', :path => 'vendor/NewsGem'
   gem 'calerific_gem', :path => 'vendor/CalerificGem'
 end
 
 # Customer Ruby Gem newapi.ord
 group :development, :test do
   gem 'sqlite3', '~> 1.3', '< 1.4' # IMPORTANT
-  gem 'news.org_api_gem'
+  #gem 'news.org_api_gem'
   # gem 'calerific_gem'
   # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
   gem 'webpacker'
