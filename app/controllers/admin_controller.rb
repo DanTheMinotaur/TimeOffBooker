@@ -16,7 +16,7 @@ class AdminController < ApplicationController
       user = EmployeeBuilder.new
       user.password user_details[:password]
       user.email user_details[:email]
-      user.user_level user_details[:user_level]
+      user.user_level user_details[:user_level].to_i
       user.name user_details[:name]
       user.job_title user_details[:job_title]
       user.total_days user_details[:days_off]
