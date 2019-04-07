@@ -62,7 +62,7 @@ class DashboardController < ApplicationController
     if params.key? :user_requests_id
       user_lookup_id = params[:user_requests_id]
 
-      @user_times_off = TimeOff.where('user_id = ?', user_lookup_id)
+      @user_times_off = TimeOff.joins(:user).where('user_id = ?', user_lookup_id).order(start_date: :asc)
     end
   end
 

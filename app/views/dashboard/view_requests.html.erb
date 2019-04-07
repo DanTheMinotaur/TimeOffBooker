@@ -1,4 +1,27 @@
 <%= render 'partials/heading', heading: 'Requests' %>
 <% @user_times_off.each do |request| %>
-  <%= request.to_s %>
+  <div class="box">
+    <h4 class="title is-3"><%= request.user.name  %>(<%= request.user.job_title %>) </h4>
+    <% if request.approved == nil%>
+      <!--<%= styling = "" %>-->
+    <% elsif request.approved %>
+      <!--<%= styling = "is-success" %>-->
+    <% else %>
+      <!--<%= styling = "is-danger" %>-->
+    <% end %>
+    <article class="message <%= styling %>">
+      <div class="message-body">
+        <% if request.approved == nil  %>
+          Requests a <%= request.off_type %> from <%= request.start_date %> to <%= request.end_date %>
+        <% else %>
+          <% if request.approved  %>
+            Your <%= request.off_type %> request has been approved for <%= request.start_date %> til <%= request.end_date %>
+          <% else %>
+            Your <%= request.off_type %> request has been denied for <%= request.start_date %> til <%= request.end_date %>
+          <% end %>
+        <% end %>
+      </div>
+    </article>
+  </div>
+  <hr>
 <% end %>
