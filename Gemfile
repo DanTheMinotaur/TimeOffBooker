@@ -6,8 +6,7 @@ ruby '2.5.1'
 group :production do
   gem 'pg'
   gem 'rails_12factor'
-  gem 'news.org_api_gem', :path => 'vendor/NewsGem'
-  gem 'calerific_gem', :path => 'vendor/CalerificGem'
+
 
 end
 
@@ -17,8 +16,10 @@ group :development, :test do
   #gem 'news.org_api_gem'
   #gem 'calerific_gem'
   # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-
 end
+# Custom Gems
+gem 'news.org_api_gem', :path => 'vendor/NewsGem'
+gem 'calerific_gem', :path => 'vendor/CalerificGem'
 gem 'webpacker'
 
 # For user auth
