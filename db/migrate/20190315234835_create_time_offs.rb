@@ -6,7 +6,7 @@ class CreateTimeOffs < ActiveRecord::Migration[5.2]
       t.text :note
       t.integer :off_type, null: false, default: 0
       t.belongs_to :user, index: true
-      t.boolean :approved
+      t.boolean :approved, null: true
       t.integer :approved_by, null: false
       t.timestamps
     end
