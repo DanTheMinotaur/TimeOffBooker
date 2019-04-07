@@ -2,7 +2,7 @@ require 'calendarific_api'
 require 'employee_builder'
 
 class AdminController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, :is_admin_redirect?
   def index
   end
 

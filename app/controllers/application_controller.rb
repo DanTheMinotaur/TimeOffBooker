@@ -3,6 +3,7 @@ require 'json'
 
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
+  # Load company config on app start.
   company_data = JSON.parse(File.read('./config/company.json'))
   Company.instance.set_company_name(company_data['company_name'])
   Company.instance.set_news_term(company_data['news_term'])
@@ -15,6 +16,20 @@ class ApplicationController < ActionController::Base
   end
 
   def index
+  end
+
+  def is_manager_redirect?
+    unless is_manager?
+      flash[:alert] = "Only managers can do this"
+      redirect_to :controller => 'dashboard', :action => 'index'
+    end
+  end
+
+  def is_admin_redirect?
+    unless is_manager?
+      flash[:alert] = "You don't have permissions to go here. For admin eyes only. "
+      redirect_to :controller => 'dashboard', :action => 'index'
+    end
   end
 
   def is_employee?

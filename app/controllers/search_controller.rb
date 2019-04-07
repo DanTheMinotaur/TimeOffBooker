@@ -2,6 +2,7 @@ class SearchController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    # Checks if there is search term and queries the database.
     if params.key? :search
       search_data = params[:search]
 

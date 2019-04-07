@@ -86,6 +86,6 @@ class DashboardController < ApplicationController
           format.json { render json: generate_ajax_response('approval', request['request_id'].to_i) }
         end
       end
-    end
+      end
   end
 end
