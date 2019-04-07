@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
   end
 
   def is_admin_redirect?
-    unless is_manager?
+    unless is_admin?
       flash[:alert] = "You don't have permissions to go here. For admin eyes only. "
       redirect_to :controller => 'dashboard', :action => 'index'
     end
