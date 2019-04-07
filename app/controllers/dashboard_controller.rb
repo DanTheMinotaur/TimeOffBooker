@@ -69,6 +69,7 @@ class DashboardController < ApplicationController
   end
 
   def approve_time_off
+    is_manager_redirect?
     # Handles time off approvals
     if params.key? :request
 
