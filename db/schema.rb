@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 2019_04_04_120528) do
     t.string "name", null: false
     t.string "job_title", null: false
     t.integer "total_days"
-    t.integer "user_level", default: 0, null: false
+    t.string "user_level", default: "0", null: false
     t.boolean "needs_approval", default: true
     t.integer "days_taken", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true

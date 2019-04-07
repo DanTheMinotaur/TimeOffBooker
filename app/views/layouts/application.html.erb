@@ -13,6 +13,9 @@
 
   <body>
   <div class="container">
+    <% if current_user%>
+      <h1><%= current_user.user_level %></h1>
+    <% end %>
     <%= render "partials/navigation" %>
 
     <% if notice %>
