@@ -9,6 +9,8 @@ class AdminController < ApplicationController
   end
 
   def permission
+    ##
+    # Handles when admin wants to assign permissions to a mangager
     if params.key? :manager_id
       @permissions = {}
       @permissions['manager'] = User.select("name, id").where("id = #{params[:manager_id].to_i}").as_json
@@ -19,14 +21,24 @@ class AdminController < ApplicationController
   end
 
   def grant_permissions
+    ##
+    # Method adds user permissions to managers
     if params.key? :permissions and params.key? :manager_id
       manager_id = params[:manager_id].to_i
       permissions = params[:permissions].to_a
+      permissions_added_count = 0
       permissions.each do |user_id|
-        Approval.create({manager_id: manager_id, user_id: user_id.to_i})
+        begin
+          if Approval.create({manager_id: manager_id, user_id: user_id.to_i})
+            permissions_added_count += 1
+          end
+        rescue ActiveRecord::RecordNotUnique => e
+          next
+        end
       end
     end
-    redirect_to index
+    flash[:notice] = "#{permissions_added_count} new uses have been assigned"
+    render action: "index"
   end
 
   def populate

@@ -15,10 +15,16 @@
     </div>
   <% end %>
   <%= @permissions.to_s %>
-<% elsif @managers %>
-  <%= render 'partials/heading', heading: 'Manager Permission', sub_heading: 'Control Permissions ' %>
-  <%= @mangers %>>
 <% else  %>
   <%= render 'partials/heading', heading: 'Manager Permission', sub_heading: 'Permissions ' %>
   <p>Select a Manager to apply Permissions to</p>
-<% end %>
+  <section class="list">
+  <% @mangers.each do |manager| %>
+      <%= form_tag '/admin/permission' %>
+      <a class="list-item" onclick="parentNode.submit();">
+          <input type="hidden" value="<%= manager['id'] %>" name="manager_id">
+          <%= manager['email']%> | <%= manager['job_title'] %> | <%= manager['name'] %>
+      </a>
+    <% end %>
+  <% end %>
+</section>

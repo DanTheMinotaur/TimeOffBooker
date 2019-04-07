@@ -4,6 +4,10 @@
 class HolidayCalulator
   ##
   # Class for calculating total holidays
+  # @param start_data: The date that the holiday period starts
+  # @param end_date: The date that the holiday period ends
+  # @param start_data: The date that the holiday period starts
+  # @param holidays[]: array of holidays that are already off
   def initialize(start_date, end_date, holidays = [])
     @total_days = calculate_total_days(start_date, end_date, holidays)
   end
