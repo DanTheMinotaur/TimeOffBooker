@@ -8,6 +8,7 @@ group :production do
   gem 'rails_12factor'
   gem 'news.org_api_gem', :path => 'vendor/NewsGem'
   gem 'calerific_gem', :path => 'vendor/CalerificGem'
+  gem 'webpacker'
 end
 
 # Customer Ruby Gem newapi.ord
@@ -16,7 +17,7 @@ group :development, :test do
   #gem 'news.org_api_gem'
   # gem 'calerific_gem'
   # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-  gem 'webpacker'
+
 end
 
 
