@@ -26,6 +26,8 @@ Rails.application.routes.draw do
   get 'admin/permission', to: 'admin#permission'
   post 'admin/permission', to: 'admin#permission'
   post 'admin/grant_permissions', to: 'admin#grant_permissions'
+  get 'admin/add_user', to: 'admin#add_user'
+  post 'admin/add_user', to: 'admin#add_user'
 
   post '/dashboard/user_requests', to: 'dashboard#view_requests'
 

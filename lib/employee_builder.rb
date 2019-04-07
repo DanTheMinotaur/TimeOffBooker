@@ -1,7 +1,7 @@
 class Employee
   ##
   # Employee Class for holiding data
-  attr_accessor :name, :email, :days_off, :job_title, :user_level, :password
+  attr_accessor :name, :email, :total_days, :job_title, :user_level, :password
 end
 
 class EmployeeBuilder
@@ -26,8 +26,8 @@ class EmployeeBuilder
     @employee.email = email
   end
 
-  def days_off(days)
-    @employee.days_off = days.to_i
+  def total_days(days)
+    @employee.total_days = days.to_i
   end
 
   def job_title(title)
@@ -59,9 +59,9 @@ class EmployeeBuilder
         password: @employee.password,
         password_confirmation: @employee.password,
         user_level: @employee.user_level,
-        days_off: @employee.days_off,
+        total_days: @employee.total_days,
         email: @employee.email,
-
+        job_title: @employee.job_title
     }
   end
 end

@@ -1,4 +1,5 @@
 require 'calendarific_api'
+require 'employee_builder'
 
 class AdminController < ApplicationController
   before_action :authenticate_user!
@@ -7,6 +8,25 @@ class AdminController < ApplicationController
 
   def users
     @users = User.all
+  end
+
+  def add_user
+    if params.key? :user_details
+      user_details = params[:user_details]
+      user = EmployeeBuilder.new
+      user.password user_details[:password]
+      user.email user_details[:email]
+      user.user_level user_details[:user_level]
+      user.name user_details[:name]
+      user.job_title user_details[:job_title]
+      user.total_days user_details[:days_off]
+
+      if User.create(user.for_model)
+        @user_created = "#{user_details[:name]} was created successfully"
+      else
+        @user_created = "Could not create user..."
+      end
+    end
   end
 
   def permission
