@@ -7,7 +7,7 @@ group :production do
   gem 'pg'
   gem 'rails_12factor'
   #gem 'news.org_api_gem', :path => 'vendor/NewsGem'
-
+  gem 'calerific_gem', :path => 'vendor/CalerificGem'
 end
 
 # Customer Ruby Gem newapi.ord
@@ -19,7 +19,6 @@ group :development, :test do
   gem 'webpacker'
 end
 
-gem 'calerific_gem', :path => 'vendor/CalerificGem/calerific'
 
 # For user auth
 gem 'devise'
