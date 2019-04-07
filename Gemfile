@@ -6,8 +6,8 @@ ruby '2.5.1'
 group :production do
   gem 'pg'
   gem 'rails_12factor'
-  gem 'news.org_api_gem', :path => 'vendor/NewsGem'
-  gem 'calerific_gem', :path => 'vendor/CalerificGem'
+  #gem 'news.org_api_gem', :path => 'vendor/NewsGem'
+  gem 'calerific_gem', :path => 'vendor/CalerificGem/calerific'
 end
 
 # Customer Ruby Gem newapi.ord
