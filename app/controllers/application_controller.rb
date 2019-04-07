@@ -1,7 +1,11 @@
 require 'company'
+#require 'lib/company'
 
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
+  Company.instance.set_company_name('EnviroCorp')
+  Company.instance.set_news_term('Cheese')
+  Company.instance.set_country('IE')
 
   def configure_permitted_parameters
     update_attrs = [:password, :password_confirmation, :current_password]

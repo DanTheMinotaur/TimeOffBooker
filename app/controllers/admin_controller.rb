@@ -32,7 +32,7 @@ class AdminController < ApplicationController
   def populate
     # Shows Admin what holidays to populate
     public_holidays = CalendarificAPI.new 'f84730195f8c53e3f602074389c0f5824800a5b3'
-    @holidays = public_holidays.get('IE', Date.today.year)
+    @holidays = public_holidays.get(Company.instance.country, Date.today.year)
   end
 
   def populate_holidays

@@ -1,0 +1,4 @@
+<%= render 'partials/heading', heading: 'Requests' %>
+<% @user_times_off.each do |request| %>
+  <%= request.to_s %>
+<% end %>

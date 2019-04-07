@@ -22,7 +22,10 @@
       <time datetime="2016-1-1"><%= updated_at %></time>
     </div>
     <footer class="card-footer">
-      <a class="card-footer-item">Show Times off</a>
+      <%= form_tag '/dashboard/user_requests' do %>
+        <input type="hidden" value="<%= user_id %>" name="user_requests_id">
+        <a class="card-footer-item" onclick="parentNode.submit();">Show Times off</a>
+      <% end %>
       <% if is_admin? and user_level == 'manager' %>
         <%= form_tag '/admin/permission' do %>
           <input type="hidden" value="<%= user_id %>" name="manager_id">

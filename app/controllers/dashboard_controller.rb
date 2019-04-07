@@ -26,11 +26,12 @@ class DashboardController < ApplicationController
       company_holidays = Holiday.pluck(:holiday_date)
 
       holiday = HolidayCalulator.new(data_to_add[:start_date], data_to_add[:end_date], company_holidays)
-      data_to_add[:days_taken] = holiday.total_days
+      data_to_add['days_taken'] = holiday.total_days
 
       if TimeOff.create(data_to_add)
         respond_to do |format|
-          format.json { render json: generate_ajax_response('request','request-received')}
+          #format.json { render json: generate_ajax_response('request','request-received')}
+          format.json { render json: generate_ajax_response('request',data_to_add)}
         end
       end
     end
@@ -39,7 +40,7 @@ class DashboardController < ApplicationController
   def news
     newsapi = NewsAPI.new 'e559847227d34d69b34f8f53cc73c7fe'
 
-    @news_data = newsapi.get('business', {
+    @news_data = newsapi.get(Company.instance.news_term, {
         'from': '2019-02-28',
         'sortBy': 'popularity'
     })
@@ -57,6 +58,14 @@ class DashboardController < ApplicationController
     end
   end
 
+  def view_requests
+    if params.key? :user_requests_id
+      user_lookup_id = params[:user_requests_id]
+
+      @user_times_off = TimeOff.where('user_id = ?', user_lookup_id)
+    end
+  end
+
   def approve_time_off
     if params.key? :request
 
@@ -65,6 +74,10 @@ class DashboardController < ApplicationController
       time_off = TimeOff.find(request['request_id'].to_i)
 
       if time_off.update(approved: request['approval'].to_i, approved_by: request['manager_id'].to_i)
+        user = User.find(time_off.user_id)
+        current_days = user.days_taken
+        current_days += time_off.days_taken
+        user.update(days_taken: current_days)
         respond_to do |format|
 
           format.json { render json: generate_ajax_response('approval', request['request_id'].to_i) }
