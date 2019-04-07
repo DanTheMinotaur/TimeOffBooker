@@ -12,7 +12,6 @@ class DashboardController < ApplicationController
   end
 
   def request_time_off
-    ##
     # Handles Holiday Booking Requests calculates number of days user is taking,
     if params.key? :time_off
       time_off_data = params[:time_off]
@@ -38,6 +37,7 @@ class DashboardController < ApplicationController
   end
 
   def news
+    # Controls new data being recieved from newsapi.org
     newsapi = NewsAPI.new 'e559847227d34d69b34f8f53cc73c7fe'
 
     @news_data = newsapi.get(Company.instance.news_term, {
@@ -47,8 +47,9 @@ class DashboardController < ApplicationController
 
   end
 
-  # Handles requests being made to managers or employee made requests.
+
   def requests
+    # Handles requests being made to managers or employee made requests.
     user_id = current_user.id
     @user_own_requests = TimeOff.joins(:user).where('user_id = ?', user_id).all.order(start_date: :asc)
     if is_admin?
@@ -59,6 +60,7 @@ class DashboardController < ApplicationController
   end
 
   def view_requests
+    # Shows requests from specific users
     if params.key? :user_requests_id
       user_lookup_id = params[:user_requests_id]
 
@@ -67,6 +69,7 @@ class DashboardController < ApplicationController
   end
 
   def approve_time_off
+    # Handles time off approvals
     if params.key? :request
 
       request = params[:request]
