@@ -8,7 +8,7 @@ group :production do
   gem 'rails_12factor'
   gem 'news.org_api_gem', :path => 'vendor/NewsGem'
   gem 'calerific_gem', :path => 'vendor/CalerificGem'
-  gem 'webpacker'
+
 end
 
 # Customer Ruby Gem newapi.ord
@@ -19,7 +19,7 @@ group :development, :test do
   # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 
 end
-
+gem 'webpacker'
 
 # For user auth
 gem 'devise'
