@@ -14,8 +14,8 @@ end
 # Customer Ruby Gem newapi.ord
 group :development, :test do
   gem 'sqlite3', '~> 1.3', '< 1.4' # IMPORTANT
-  gem 'news.org_api_gem'
-  gem 'calerific_gem'
+  #gem 'news.org_api_gem'
+  #gem 'calerific_gem'
   # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 
 end
