@@ -39,6 +39,7 @@ class EmployeeBuilder
   end
 
   def user_level(level)
+    # Takes either user level string or int and if not valid returns regular user.
     user_level = 1
     valid_options = {
         manager: 2,
@@ -54,6 +55,7 @@ class EmployeeBuilder
   end
 
   def for_model
+    # Exports data as hash for model
     {
         name: @employee.name,
         password: @employee.password,

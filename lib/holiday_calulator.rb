@@ -34,9 +34,3 @@ class HolidayCalulator
     holiday_count
   end
 end
-#
-# dates = TimeOff.find(1)
-#
-# obj = HolidayCalulator.new(dates['start_date'], dates['end_date'], [Date.new(2019, 03, 20), Date.new(2019, 03, 19)])
-#
-# puts obj.total_days

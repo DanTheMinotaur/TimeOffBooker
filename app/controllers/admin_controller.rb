@@ -7,10 +7,12 @@ class AdminController < ApplicationController
   end
 
   def users
+    # Shows list of all users
     @users = User.all
   end
 
   def add_user
+    # Method adds a user for model
     if params.key? :user_details
       user_details = params[:user_details]
       user = EmployeeBuilder.new
